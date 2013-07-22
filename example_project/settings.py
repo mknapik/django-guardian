@@ -35,6 +35,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_extensions',
+
     'guardian',
     'guardian.tests.testapp',
     'posts',

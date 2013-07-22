@@ -20,3 +20,15 @@ class Post(models.Model):
     def get_absolute_url(self):
         return ('posts_post_detail', (), {'slug': self.slug})
 
+
+class Comment(models.Model):
+    author = models.CharField('author', max_length=64)
+    content = models.TextField('content')
+
+    class Meta:
+        permissions = (
+            ('view_comment', 'Can view comment'),
+        )
+
+    def __unicode__(self):
+        return self.content[0:30] + '...'

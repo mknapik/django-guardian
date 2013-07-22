@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+
+    <div class="span3">
+        <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+                <li class="nav-header">Recent comments</li>
+                {% for comment in comments %}
+                <li><a href="#{{ comment.id }}">{{ comment }}</a></li>
+                {% endfor %}
+            </ul>
+        </div><!--/.well -->
+    </div>
+
+    <div class="span9">
+        <div class="hero-unit">
+            <h1>Comments</h1>
+            <a href="{% url "admin:posts_comment_add" %}" class="btn btn-primary">Add comment</a>
+        </div>
+    </div>
+{% for comment in comments %}
+    <div class="span3">
+    </div>
+    <div class="span9">
+        <a href="{% url "posts_comment_detail" comment.id %}" name="{{ comment.id }}"><h1>{{ comment }}</h1></a>
+        <hr/>
+        {{ comment.content|safe }}
+    </div>
+{% endfor %}
+</div>
+
+
+{% endblock %}
